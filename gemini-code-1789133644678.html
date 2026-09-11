@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eat N Fit — Dietitian Amrita Chakraborty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-navy: #0f2c59;
+      --navy-light: #1e40af;
+      --sky-blue: #0284c7;
+      --sky-blue-light: #e0f2fe;
+      --sky-blue-border: #bae6fd;
+      --beige-bg: #f8f4e9;
+      --beige-card: #f3ece0;
+      --dark-text: #0f172a;
+      --muted: #475569;
+      --white: #ffffff;
+      --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      color: var(--dark-text);
+      background-color: #fafaf9;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 28px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .logo {
+      width: 56px; height: 56px; background: var(--primary-navy);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; color: var(--white); font-weight: 700;
+      font-size: 13px; text-align: center; border: 2px solid var(--sky-blue);
+    }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    nav ul li a { font-weight: 500; font-size: 15px; color: var(--primary-navy); }
+    nav ul li a:hover { color: var(--sky-blue); }
+    a { color: inherit; text-decoration: none; }
+    .cta {
+      background: var(--primary-navy); color: var(--white); padding: 10px 16px;
+      border-radius: 8px; font-weight: 600; display: inline-block;
+      transition: background 0.2s ease;
+    }
+    .cta:hover { background: var(--sky-blue); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr 400px; gap: 36px; align-items: center; padding: 56px 0; }
+    .hero h1 { font-size: 36px; color: var(--primary-navy); margin: 0 0 12px; font-weight: 700; letter-spacing: -0.5px; }
+    .lead { color: var(--muted); margin-bottom: 20px; font-size: 16px; }
+    .hero .card {
+      background: var(--beige-bg);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #e8dfcf;
+      box-shadow: 0 4px 12px rgba(15, 44, 89, 0.04);
+    }
+    .features { display: flex; gap: 12px; margin-top: 24px; }
+    .feature {
+      background: var(--sky-blue-light);
+      padding: 12px;
+      border-radius: 8px;
+      flex: 1;
+      text-align: center;
+      border: 1px solid var(--sky-blue-border);
+    }
+
+    /* Sections */
+    section { padding: 48px 0; border-top: 1px solid var(--border-color); }
+    section h2 { color: var(--primary-navy); font-size: 28px; margin-top: 0; font-weight: 700; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--sky-blue);
+      box-shadow: 0 2px 8px rgba(15, 44, 89, 0.03);
+    }
+
+    /* Newsletter Card Styling */
+    .newsletter-card {
+      background: var(--beige-bg);
+      border-radius: 12px;
+      padding: 28px;
+      border: 1px solid #e8dfcf;
+      box-shadow: 0 4px 12px rgba(15, 44, 89, 0.04);
+    }
+    .newsletter-header {
+      border-bottom: 2px solid var(--primary-navy);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .newsletter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .newsletter-box {
+      background: var(--white);
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Testimonials */
+    .testimonials { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; }
+    .testimonial {
+      min-width: 280px;
+      background: var(--beige-bg);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e8dfcf;
+    }
+
+    /* Contact */
+    form { display: grid; gap: 14px; }
+    input, textarea, select {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--dark-text);
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid var(--sky-blue);
+      border-color: transparent;
+    }
+    button[type="submit"] {
+      background: var(--sky-blue);
+      color: var(--white);
+      padding: 12px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.2s ease;
+    }
+    button[type="submit"]:hover { background: var(--primary-navy); }
+
+    footer {
+      background: var(--primary-navy);
+      color: var(--white);
+      padding: 32px 0;
+      margin-top: 24px;
+    }
+    footer a { color: var(--sky-blue-light); }
+    .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .newsletter-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+    }
+    @media (max-width: 520px) {
+      .services { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">EatN'Fit</div>
+        <div>
+          <div style="font-weight:700; color:var(--primary-navy);">Eat N Fit</div>
+          <div style="font-size:12px; color:var(--muted)">Dietitian — Amrita Chakraborty</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#plans">Plans</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="cta" href="#contact">Book Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" style="border-top:none;">
+      <div>
+        <h1>Personalised nutrition plans for real life — feel lighter, stronger, and more energetic</h1>
+        <p class="lead">Eat N Fit provides evidence-based diet plans, realistic meal prep ideas, and supportive follow-up to help you reach lasting results — for weight loss, PCOS, hypothyroid, child nutrition, and more.</p>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a class="cta" href="#contact" style="background:var(--sky-blue);">Start Your Plan</a>
+          <a href="#plans" style="padding:10px 16px;border-radius:8px;border:1px solid var(--primary-navy);color:var(--primary-navy);font-weight:600">View Plans</a>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div style="font-weight:700;color:var(--primary-navy)">Personalised</div>
+            <div style="font-size:13px;color:var(--muted)">Custom meal plans</div>
+          </div>
+          <div class="feature">
+            <div style="font-weight:700;color:var(--primary-navy)">Practical</div>
+            <div style="font-size:13px;color:var(--muted)">Tiffin & home-friendly</div>
+          </div>
+          <div class="feature">
+            <div style="font-weight:700;color:var(--primary-navy)">Supported</div>
+            <div style="font-size:13px;color:var(--muted)">Progress tracking</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin-top:0;color:var(--primary-navy);">Quick Consult</h3>
+        <p style="color:var(--muted);margin-bottom:8px">15-minute introductory call to understand goals & suggest the best plan.</p>
+        <ul style="padding-left:18px;color:var(--muted);margin-top:6px">
+          <li>Cost: ₹200</li>
+          <li>Mode: Phone / Video call</li>
+        </ul>
+        <div style="margin-top:16px">
+          <a class="cta" href="#contact" style="width:100%;text-align:center;">Book Now</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="two-col">
+        <div>
+          <h2>About Amrita Chakraborty</h2>
+          <p class="lead">Clinical Dietitian with 25 years of experience and 14 years in hospital practice. I believe in simple, culturally-appropriate food that fits your schedule. Special interests: hypothyroid, PCOS, weight management, child nutrition, sports nutrition.</p>
+          <ul style="color:var(--muted);line-height:1.8">
+            <li>Personal consultations — in-person & online</li>
+            <li>Individualised meal plans & recipes</li>
+            <li>Group workshops & school tiffin plans</li>
+          </ul>
+        </div>
+        <div>
+          <div style="background:var(--white);border-radius:10px;padding:20px;border:1px solid var(--border-color);box-shadow:0 2px 8px rgba(15,44,89,0.03);">
+            <h3 style="margin-top:0;color:var(--primary-navy);">Clinic Info</h3>
+            <p style="margin:0 0 8px;font-weight:600">Eat N Fit — Dietitian Amrita Chakraborty</p>
+            <p style="margin:0 0 8px;color:var(--muted)"><strong>Phone:</strong> <a href="tel:+919051912905" style="color:var(--sky-blue);font-weight:500;">9051912905</a></p>
+            <p style="margin:0 0 8px;color:var(--muted)"><strong>Location:</strong> Kolkata, India</p>
+            <p style="margin:0;color:var(--muted)"><strong>Hours:</strong> Mon-Sat • 10:00 — 18:00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="services">
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Weight Management</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Sustainable weight loss plans that include home-friendly recipes and realistic portioning.</p>
+        </div>
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Clinical Nutrition</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Diet guidance for hypothyroid, diabetes, PCOS, and other metabolic concerns.</p>
+        </div>
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Child & School Tiffin Plans</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Nutritious, easy-to-make tiffin ideas that kids love — six-day rotating menus available.</p>
+        </div>
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Sports Nutrition</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Performance-focused plans for athletes and active adults.</p>
+        </div>
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Meal Prep Workshops</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Small-group hands-on sessions — learn batch-cooking and balanced meals.</p>
+        </div>
+        <div class="service">
+          <h4 style="margin-top:0;margin-bottom:8px;color:var(--primary-navy);">Follow-up & Accountability</h4>
+          <p style="color:var(--muted);font-size:14px;margin:0">Weekly or bi-weekly follow-ups with adjustments and motivational support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <h2>Plans & Pricing</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+        <div class="card" style="flex:1;min-width:220px;background:var(--white);padding:20px;border-radius:10px;border:1px solid var(--border-color);">
+          <h3 style="margin-top:0;color:var(--primary-navy);">Starter</h3>
+          <p style="color:var(--muted)">Initial assessment + 2-week personalised plan. 1 follow-up.</p>
+          <p style="font-weight:700;font-size:22px;color:var(--primary-navy);margin:12px 0">₹999</p>
+          <a class="cta" href="#contact" style="width:100%;text-align:center;">Choose</a>
+        </div>
+        <div class="card" style="flex:1;min-width:220px;background:var(--sky-blue-light);padding:20px;border-radius:10px;border:2px solid var(--sky-blue);">
+          <h3 style="margin-top:0;color:var(--primary-navy);">Standard</h3>
+          <p style="color:var(--muted)">Initial assessment + 1-month plan. 3 follow-ups + recipes.</p>
+          <p style="font-weight:700;font-size:22px;color:var(--primary-navy);margin:12px 0">₹2,999</p>
+          <a class="cta" href="#contact" style="width:100%;text-align:center;background:var(--sky-blue);">Choose</a>
+        </div>
+        <div class="card" style="flex:1;min-width:220px;background:var(--white);padding:20px;border-radius:10px;border:1px solid var(--border-color);">
+          <h3 style="margin-top:0;color:var(--primary-navy);">Comprehensive</h3>
+          <p style="color:var(--muted)">3-month program with weekly follow-ups, meal prep guide & progress tracking.</p>
+          <p style="font-weight:700;font-size:22px;color:var(--primary-navy);margin:12px 0">₹3,999</p>
+          <a class="cta" href="#contact" style="width:100%;text-align:center;">Choose</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Newsletter Section -->
+    <section id="newsletter">
+      <h2>Monthly Nutrition Newsletter</h2>
+      <div class="newsletter-card">
+        <div class="newsletter-header">
+          <div>
+            <h3 style="margin:0;color:var(--primary-navy);">EAT N FIT DIET CLINIC</h3>
+            <span style="font-size:13px;color:var(--muted);">SEPTEMBER 2026 • Issue 01</span>
+          </div>
+          <div style="font-weight:600;color:var(--sky-blue);font-size:14px;">
+            Eat Right • Stay Fit • Live Better
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color:var(--primary-navy);margin-top:0;">💡 THIS MONTH'S NUTRITION FOCUS</h4>
+          <p style="color:var(--muted);font-size:15px;margin-bottom:16px;">
+            <strong>Healthy eating is not about eating less—it is about eating better.</strong> A balanced Indian diet can include vegetables, fruits, whole grains, adequate protein, healthy fats, and sufficient water. Small, consistent changes can support healthier long-term habits.
+          </p>
+        </div>
+
+        <div style="background:var(--white);padding:18px;border-radius:8px;border:1px solid var(--border-color);margin-bottom:20px;">
+          <h4 style="color:var(--primary-navy);margin-top:0;">📋 5 SIMPLE TIPS FOR BETTER NUTRITION</h4>
+          <ol style="margin:0;padding-left:20px;color:var(--muted);line-height:1.8;">
+            <li><strong>Start your day well:</strong> Choose a nutritious breakfast.</li>
+            <li><strong>Add vegetables:</strong> Include vegetables in lunch and dinner.</li>
+            <li><strong>Choose better grains:</strong> Try atta, oats, jowar, bajra, or brown rice.</li>
+            <li><strong>Include protein:</strong> Add a suitable protein source to each major meal.</li>
+            <li><strong>Stay hydrated:</strong> Drink adequate fluids through the day.</li>
+          </ol>
+        </div>
+
+        <div class="newsletter-grid">
+          <div class="newsletter-box">
+            <h4 style="color:var(--primary-navy);margin-top:0;">🥑 FOOD OF THE MONTH</h4>
+            <h5 style="margin:4px 0;font-size:16px;color:var(--dark-text);">Guava</h5>
+            <p style="color:var(--muted);font-size:13px;margin:0;">A convenient whole fruit that provides fibre and vitamin C. Enjoy it as a whole fruit rather than as juice.</p>
+          </div>
+          <div class="newsletter-box">
+            <h4 style="color:var(--primary-navy);margin-top:0;">🍲 EASY INDIAN MEAL IDEA</h4>
+            <h5 style="margin:4px 0;font-size:16px;color:var(--dark-text);">Vegetable Moong Dal Khichdi + Curd + Salad</h5>
+            <p style="color:var(--muted);font-size:13px;margin:0;">A simple, comforting meal that can be adapted to individual nutritional requirements.</p>
+          </div>
+        </div>
+
+        <div class="newsletter-grid" style="margin-top:16px;">
+          <div class="newsletter-box" style="border-left:4px solid #ef4444;">
+            <h4 style="color:#ef4444;margin-top:0;">❌ NUTRITION MYTH</h4>
+            <p style="font-size:13px;margin:0 0 6px;color:var(--dark-text);"><strong>Myth:</strong> "Carbohydrates should always be avoided for weight management."</p>
+            <p style="font-size:13px;margin:0;color:var(--muted);"><strong>Fact:</strong> The type, portion, and overall dietary pattern matter. Nutritious carbohydrate sources can be part of a balanced diet.</p>
+          </div>
+          <div class="newsletter-box" style="background:var(--sky-blue-light);border:1px solid var(--sky-blue-border);text-align:center;display:flex;flex-direction:column;justify-content:center;">
+            <h4 style="color:var(--primary-navy);margin:0 0 6px;">❤️ REMEMBER</h4>
+            <p style="font-size:15px;font-weight:600;color:var(--primary-navy);margin:0;">Don't aim for a perfect diet. Aim for sustainable healthy habits.</p>
+          </div>
+        </div>
+
+        <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:20px;margin-bottom:0;">
+          For general nutrition education only. Individual dietary requirements may vary.
+        </p>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonials" aria-live="polite">
+        <div class="testimonial">
+          <p style="margin:0;color:var(--dark-text)">"Amrita's plan made tiffin prep so easy — my son's energy improved and the teacher noticed!"</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:600">— Priya, Kolkata</p>
+        </div>
+        <div class="testimonial">
+          <p style="margin:0;color:var(--dark-text)">"Lost 6 kg in 3 months without feeling hungry. Practical and supportive."</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:600">— Rohan</p>
+        </div>
+        <div class="testimonial">
+          <p style="margin:0;color:var(--dark-text)">"Helpful follow-ups and real food suggestions — not just restrictive lists."</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:600">— Meera</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact & Bookings</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead">Ready to start? Fill the form below or call <a href="tel:+919051912905" style="color:var(--sky-blue);font-weight:600;">9051912905</a>.</p>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <input type="tel" name="phone" placeholder="Phone (optional)" />
+            <select name="service">
+              <option value="General consultation">General consultation</option>
+              <option value="Weight management">Weight management</option>
+              <option value="Child nutrition">Child nutrition</option>
+              <option value="Clinical nutrition">Clinical nutrition</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Tell us about your goals" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+          <div id="formMessage" style="margin-top:10px;color:var(--muted)"></div>
+        </div>
+        <div>
+          <div style="background:var(--white);border-radius:10px;padding:20px;border:1px solid var(--border-color);">
+            <h3 style="margin-top:0;color:var(--primary-navy);">Location & Hours</h3>
+            <p style="margin:0 0 8px;color:var(--muted)">Kolkata, West Bengal — in-person by appointment. Online consultations available worldwide.</p>
+            <p style="margin:0 0 8px;color:var(--muted)"><strong>Phone:</strong> <a href="tel:+919051912905" style="color:var(--sky-blue)">9051912905</a></p>
+            <p style="margin:0 0 8px;color:var(--muted)"><strong>Email:</strong> <a href="mailto:amrita.yc@gmail.com" style="color:var(--sky-blue)">amrita.yc@gmail.com</a></p>
+          </div>
+
+          <div style="margin-top:16px;background:var(--beige-bg);border-radius:10px;padding:16px;border:1px solid #e8dfcf;">
+            <h4 style="margin:0 0 8px;color:var(--primary-navy);">Quick tips</h4>
+            <ul style="color:var(--muted);padding-left:18px;margin:0;line-height:1.6;">
+              <li>Start with a food diary for 3 days</li>
+              <li>Include protein at every meal</li>
+              <li>Prep simple tiffins: chapati, veggies, dal, fruit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong style="color:var(--white)">Eat N Fit</strong> — Dietitian Amrita Chakraborty
+        <div style="font-size:13px;color:#94a3b8">Contact: <a href="tel:+919051912905">9051912905</a></div>
+      </div>
+      <div style="font-size:13px;color:#94a3b8">© Eat N Fit — All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const name = f.get('name');
+      const email = f.get('email');
+      const phone = f.get('phone') || 'N/A';
+      const service = f.get('service');
+      const message = f.get('message');
+      
+      const targetEmail = 'amrita.yc@gmail.com';
+      const subject = encodeURIComponent('Eat N Fit enquiry — ' + service + ' — ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\nService: ' + service + '\n\nMessage:\n' + message);
+      
+      window.location.href = 'mailto:' + targetEmail + '?subject=' + subject + '&body=' + body;
+      document.getElementById('formMessage').textContent = 'Opening your email client to complete booking...';
+    }
+  </script>
+</body>
+</html>
